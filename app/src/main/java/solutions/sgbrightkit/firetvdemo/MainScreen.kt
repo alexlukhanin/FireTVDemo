@@ -31,12 +31,28 @@ fun MainScreen() {
             ) {
                 items(MovieList.categories.size) { index ->
                     val (categoryName, movies) = MovieList.categories[index]
-                    Text(
-                        text = categoryName,
-                        style = MaterialTheme.typography.headlineMedium
+                    MovieCategory(
+                        categoryName = categoryName,
+                        movies = movies
                     )
                 }
             }
         }
+    }
+}
+
+@Composable
+fun MovieCategory(
+    categoryName: String,
+    movies: List<Movie>
+) {
+    Column {
+        Text(
+            text = categoryName,
+            style = MaterialTheme.typography.headlineMedium,
+            modifier = Modifier.padding(bottom = 16.dp)
+        )
+
+        Text(text = "$categoryName has ${movies.size} movies")
     }
 }
