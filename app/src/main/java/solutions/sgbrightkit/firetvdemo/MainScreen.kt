@@ -24,16 +24,17 @@ fun MainScreen() {
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(48.dp)
+                .padding(48.dp, 40.dp)
         ) {
             Text(
                 text = "🔥 FireTV Demo",
-                style = MaterialTheme.typography.displayMedium,
-                modifier = Modifier.padding(bottom = 32.dp)
+                style = MaterialTheme.typography.displaySmall,
+                modifier = Modifier.padding(bottom = 20.dp)
             )
 
             LazyColumn(
-                verticalArrangement = Arrangement.spacedBy(24.dp)
+                verticalArrangement = Arrangement.spacedBy(20.dp),
+                contentPadding = PaddingValues(bottom = 40.dp)
             ) {
                 items(MovieList.categories.size) { index ->
                     val (categoryName, movies) = MovieList.categories[index]
@@ -60,7 +61,8 @@ fun MovieCategory(
         )
 
         LazyRow(
-            horizontalArrangement = Arrangement.spacedBy(16.dp)
+            horizontalArrangement = Arrangement.spacedBy(16.dp),
+            contentPadding = PaddingValues(horizontal = 16.dp)
         ) {
             items(movies.size) { index ->
                 MovieCard(
@@ -84,7 +86,7 @@ fun MovieCard(
         onClick = onClick,
         modifier = Modifier
             .width(240.dp)
-            .height(180.dp)
+            .height(135.dp)
     ) {
         Box(modifier = Modifier.fillMaxSize()) {
             Text(text = movie.title)
