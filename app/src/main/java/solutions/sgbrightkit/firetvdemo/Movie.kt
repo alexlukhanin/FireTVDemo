@@ -5,7 +5,6 @@ class Movie(
     val title: String,
     val description: String,
     val studio: String,
-//    val cardImageUrl: String = "https://placehold.co/313x176/1e1e1e/ff9800?text=Movie"
-    val cardImageUrl: String = "https://picsum.photos/313/176"
+    val cardImageUrl: String = "https://picsum.photos/seed/$id/313/176"
 ) {
 }
