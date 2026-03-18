@@ -8,6 +8,8 @@ import androidx.tv.material3.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.tv.material3.ExperimentalTvMaterial3Api
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.ui.unit.dp
 
 @OptIn(ExperimentalTvMaterial3Api::class)
 @Composable
@@ -53,6 +55,17 @@ fun MovieCategory(
             modifier = Modifier.padding(bottom = 16.dp)
         )
 
-        Text(text = "$categoryName has ${movies.size} movies")
+        LazyRow(
+            horizontalArrangement = Arrangement.spacedBy(16.dp)
+        ) {
+            items(movies.size) { index ->
+                Text(
+                    text = movies[index].title,
+                    modifier = Modifier
+                        .width(200.dp)
+                        .padding(16.dp)
+                )
+            }
+        }
     }
 }
