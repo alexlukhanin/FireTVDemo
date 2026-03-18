@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.tv.material3.Card
@@ -19,6 +20,9 @@ import androidx.tv.material3.MaterialTheme
 import androidx.tv.material3.Surface
 import androidx.tv.material3.Text
 import coil.compose.AsyncImage
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.ui.graphics.Color
 
 @OptIn(ExperimentalTvMaterial3Api::class)
 @Composable
@@ -99,6 +103,20 @@ fun MovieCard(
                 contentDescription = movie.title,
                 modifier = Modifier.fillMaxSize()
             )
+
+            Box(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .background(Color.Black.copy(alpha = 0.7f))
+                    .align(Alignment.BottomStart)
+            ) {
+                Text(
+                    text = movie.title,
+                    style = MaterialTheme.typography.bodyMedium,
+                    color = Color.White,
+                    modifier = Modifier.padding(8.dp)
+                )
+            }
         }
     }
 }
