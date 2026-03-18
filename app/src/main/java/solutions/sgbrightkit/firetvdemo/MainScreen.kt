@@ -10,6 +10,10 @@ import androidx.tv.material3.ExperimentalTvMaterial3Api
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.ui.unit.dp
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.width
+import androidx.tv.material3.Card
 
 @OptIn(ExperimentalTvMaterial3Api::class)
 @Composable
@@ -59,13 +63,31 @@ fun MovieCategory(
             horizontalArrangement = Arrangement.spacedBy(16.dp)
         ) {
             items(movies.size) { index ->
-                Text(
-                    text = movies[index].title,
-                    modifier = Modifier
-                        .width(200.dp)
-                        .padding(16.dp)
+                MovieCard(
+                    movie = movies[index],
+                    onClick = {
+                        // We'll handle clicks later
+                    }
                 )
             }
+        }
+    }
+}
+
+@OptIn(ExperimentalTvMaterial3Api::class)
+@Composable
+fun MovieCard(
+    movie: Movie,
+    onClick: () -> Unit
+) {
+    Card(
+        onClick = onClick,
+        modifier = Modifier
+            .width(240.dp)
+            .height(180.dp)
+    ) {
+        Box(modifier = Modifier.fillMaxSize()) {
+            Text(text = movie.title)
         }
     }
 }
